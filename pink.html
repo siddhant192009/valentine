@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pink Page</title>
+  <title>Pink Background – 3 Images</title>
 
   <style>
     * {
@@ -17,21 +17,35 @@
     }
 
     body {
-      background: pink;
-      padding: 30px; /* this creates the pink border */
+      background: #ffc0cb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px; /* pink border */
     }
 
-    img {
+    .container {
       width: 100%;
       height: 100%;
+      display: flex;
+      gap: 25px;
+    }
+
+    .container img {
+      flex: 1;
+      height: 100%;
       object-fit: cover;
-      display: block;
-      border-radius: 16px; /* optional */
+      border-radius: 18px;
     }
   </style>
 </head>
 
 <body>
-  <img src="her.jpg" alt="image">
+  <div class="container">
+    <img src="image1.jpg" alt="image 1">
+    <img src="image2.jpg" alt="image 2">
+    <img src="image3.jpg" alt="image 3">
+  </div>
 </body>
 </html>
+
