@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Love 💕</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #ffd6e8;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .page {
+      width: 100%;
+      height: 100%;
+      display: none; /* IMPORTANT */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #ffd6e8;
+      text-align: center;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #b03060;
+      margin-bottom: 20px;
+    }
+
+    h1 { font-size: 4rem; }
+    h2 { font-size: 2.5rem; }
+
+    .arrow {
+      position: absolute;
+      bottom: 30px;
+      font-size: 2.5rem;
+      color: #b03060;
+      cursor: pointer;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Page 3 cards */
+    .options {
+      display: flex;
+      gap: 30px;
+      margin-top: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .label {
+      font-size: 1.2rem;
+      color: #b03060;
+    }
+ /* Page 1 text boxes */
+.textbox {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px; /* 👈 requested size */
+  color: #b03060;
+  width: 80%;
+  max-width: 320px;
+  margin: 8px 0;
+}
+
+/* Floating hearts for Page 2 */
+.hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  color: rgba(176, 48, 96, 0.35);
+  font-size: 18px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+
+/* Old letter page */
+/* Old letter page */
+.letter-container {
+  background: #f5e6c8;
+  width: 90%;              /* 👈 wider */
+  max-width: 800px;        /* 👈 bigger max size */
+  min-height: 60vh;        /* 👈 covers more screen height */
+  padding: 50px 45px;      /* 👈 more breathing space */
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 40px rgba(0,0,0,0.18),
+    0 15px 30px rgba(0,0,0,0.3);
+  font-size: 14px;         /* stays 14 */
+  color: #5a3e2b;
+  line-height: 1.9;
+  font-family: "Times New Roman", serif;
+  position: relative;
+}
+
+
+/* Slight aged effect */
+.letter-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.04);
+  pointer-events: none;
+}
+
+/* Page 8 image gallery – cute version */
+.gallery {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+}
+
+/* Collage layout for Page 9 */
+.collage {
+  width: 90%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+}
+
+/* Large main image */
+.collage .main {
+  grid-row: span 2;
+  height: 420px;
+}
+
+/* Smaller images */
+.collage .small {
+  height: 200px;
+}
+
+/* Separate final option */
+.final-section {
+  margin-top: 60px;           /* distance from other options */
+  text-align: center;
+  opacity: 0.95;
+}
+
+.final-title {
+  font-size: 22px;        /* 👈 bigger */
+  color: #7a3f55;
+  margin-bottom: 14px;
+  letter-spacing: 0.8px;
+  font-family: 'Playfair Display', serif;
+}
+
+
+.final-section .card {
+  width: 240px;
+  height: 110px;
+  border-radius: 32px;
+}
+
+/* Page 3 middle layout */
+.middle-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Image next to options */
+.side-photo {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 40% 40% 50% 50%; /* heart-ish shape */
+  border: 4px solid #b03060;     /* red outline */
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
+
+/* Page 3 middle layout */
+.middle-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Image next to options */
+.side-photo {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 40% 40% 50% 50%; /* heart-ish shape */
+  border: 4px solid #b03060;     /* red outline */
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
+
+/* Final Question Page */
+.final-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 40px;
+}
+
+.final-question-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #b03060;
+}
+.final-buttons {
+  position: relative;
+  width: 520px;
+  height: 220px;
+}
+
+
+
+
+.final-btn {
+  padding: 18px 50px;
+  font-size: 18px;
+  border-radius: 40px;
+  border: 2px solid #b03060;
+  background: #fff;
+  color: #b03060;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.15s ease-out;
+}
+
+/* YES button – fixed position */
+.final-btn.yes {
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* NO button – movable */
+.final-btn.no {
+  left: 65%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.confetti span {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background: #ff5c8a;
+  opacity: 0.8;
+  animation: fall 3s linear infinite;
+}
+
+.confetti span:nth-child(odd) {
+  background: #ffd6e8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Final message option on Page 11 */
+.final-message-section {
+  margin-top: 50px;          /* separation */
+  text-align: center;
+}
+
+.final-message-btn {
+  padding: 14px 40px;
+  font-size: 16px;
+  border-radius: 30px;
+
+.back-btn {
+  position: fixed;          /* stays in same place on screen */
+  bottom: 20px;             /* 👈 bottom */
+  left: 20px;               /* 👈 left */
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 22px;
+  border: 1.5px solid #b03060;
+  background: #fff;
+  color: #b03060;
+  cursor: pointer;
+  transition: 0.2s ease;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  background: #b03060;
+  color: #fff;
+}
+
+.final-message-hint {
+  font-size: 12px;
+  color: #7a3f55;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+/* Final message page */
+.final-message-page {
+  background: #b03060; /* deep red background */
+}
+
+/* Big pink textbox */
+.final-message-box {
+  background: #ffd6e8; /* soft pink */
+  width: 90%;
+  max-width: 800px;
+  min-height: 60vh;
+  padding: 50px 45px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+  font-size: 14px;
+  color: #5a2a3a;
+  line-height: 1.9;
+  font-family: "Times New Roman", serif;
+}
+
+/* Page 10 – Listen page */
+.listen-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.audio-card {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  width: 320px;
+  text-align: left;
+}
+
+.audio-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #b03060;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+
+
+
+  <div class="textbox">
+   Forr myy Arainaa
+  </div>
+
+  <div class="textbox">
+    The girl who became a part of me... a part without which i was always going to be incomplete. I love you sooo much baby
+  </div>
+
+  <div class="arrow" onclick="goToPage(2)">↓</div>
+</div>
+
+
+ <!-- PAGE 2 -->
+<div class="page" id="page2">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+
+  <!-- hearts layer -->
+  <div class="hearts">
+    <div class="heart" style="top:10%; left:15%;">💗</div>
+    <div class="heart" style="top:20%; left:70%;">💖</div>
+    <div class="heart" style="top:35%; left:40%;">💞</div>
+    <div class="heart" style="top:55%; left:20%;">💗</div>
+    <div class="heart" style="top:60%; left:80%;">💖</div>
+    <div class="heart" style="top:75%; left:50%;">💞</div>
+    <div class="heart" style="top:85%; left:30%;">💗</div>
+  </div>
+
+  <h2>This took me wayyy too much time to make...I hope you like it. All of it was worth it because for me you are the most important..... and justt.... thankyou for being in my life 💌</h2>
+  <div class="arrow" onclick="goToPage(3)">↓</div>
+
+</div>
+
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+
+  <h2>Visit all the options one by one......hehehe 💕</h2>
+
+  <!-- MIDDLE ROW WITH IMAGES + OPTIONS -->
+  <div class="middle-row">
+
+
+
+    <!-- MAIN OPTIONS -->
+    <div class="options">
+
+      <!-- READ -->
+      <div class="card" onclick="goToPage(4)">
+        <div class="icon">📩</div>
+        <div class="label">Read</div>
+      </div>
+
+      <!-- SEE -->
+      <div class="card" onclick="goToPage(8)">
+        <div class="icon">👀</div>
+        <div class="label">See</div>
+      </div>
+
+      <!-- LISTEN -->
+      <div class="card" onclick="goToPage(10)">
+        <div class="icon">🎧</div>
+        <div class="label">Listen</div>
+      </div>
+
+    </div>
+
+ 
+
+  </div>
+
+  <!-- FINAL SEPARATE OPTION -->
+  <div class="final-section">
+
+    <div class="final-title">Open at Last</div>
+
+    <div class="card" onclick="goToPage(9)">
+      <div class="label">The Final Shi</div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+
+  <h2>See all of themm</h2>
+
+  <div class="options">
+    <div class="card" onclick="goToPage(5)">
+      <div class="label">Past</div>
+    </div>
+
+    <div class="card" onclick="goToPage(6)">
+      <div class="label">Present</div>
+    </div>
+
+    <div class="card" onclick="goToPage(7)">
+      <div class="label">Future</div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+  <h2> I lovee youu soo fuckin much </h2>
+
+  <div class="letter-container">
+    My love,<br><br>
+If we’re talking about what happened earlier, there is definitely a lot to say. Yeah, things have been kind of different for us, babe… but guess what? Even after all that happened, we’re still together. And that’s what matters, Araina.
+
+I know a lot of stuff happened, and things were really hard for you. Babe, I’m so sorry for that. But things are better now, and I’m so proud of you for staying with me even after facing all of that. It would’ve been so easy for you to just leave, but you didn’t — and I love you for that Aaru.
+
+I’m incredibly proud of you, and I’m so grateful too. We’ve had a lot of arguments, and yeah, sometimes we hurt each other. But what really matters is how we handle it — and babe, I’m proud of us for handling things the way we do.
+
+It’s been 118 days since we’ve been together. That’s honestly fucking astonishing, babe, because most teenage relationships don’t last that long. But at the same time, I’m not even surprised, because the way we love each other isn’t that easy to break apart.
+
+Thank you, baby, for being who you are. You’ve been nothing short of an angel in my life. Thank you for handling me the way you do. Thank you for giving me reassurance whenever I ask for it. Thank you for being so patient with me and not getting angry at small things like I sometimes do. Thank you for being my best friend when I need you to be. Thank you for always standing beside me. Thank you for never judging me. Thank you for listening to my farts and shits flirting telling me not to stop.
+
+Araina, my love for you has only grown since we’ve been together, and it always will.
+
+Just… THANK YOU, BABYYYYYY. ❤️
+    
+  </div>
+</div>
+
+
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+  <h2>Hehehehehhe 💌</h2>
+
+  <div class="letter-container">
+    My sweetheart ,<br><br>
+
+Hehehehe, I’m kinda hungry right now… but I’m way more hungry for you — both in an explicit and non-explicit way. I’m just really happy that we get to talk now, and that we’re taking full advantage of it. We talk for like four hours a day, which is crazy compared to what we had earlier.
+
+Baby, I’m sooooo happy it’s insane. Why, you ask? Duh, because I have you, Araina. You never fail to make me happy. Even just thinking about you, or the fact that you love me, makes me go absolutely bonkers.
+
+Imagine having the most perfect girl-the prettiest, the most thoughtful, caring, understanding, selfless, just the bestttt girl all to myself. AHHHH, I’m so happy.
+
+Baby, if there’s one thing in this world I cherish the most, it’s you. And I truly mean that. I seriously do. Even catching a glimpse of your face fills me with this overwhelming sense of love for you. Even seeing your name written somewhere makes my stomach drop — in a good way tho.
+
+Every time you touch me, I feel so otherworldly. Every time you look into my eyes, my brain starts firing, my heart starts beating faster, and I get so flustered — ahhhhh, I’m done. Even though you’re literally my girlfriend, you still make me hella nervous.
+
+Yeah, I get shy around you sometimes… but how could I not, babe? Have you seen yourself? You’re an absolute goddess. And beyond that, the way you care about me makes me feel so deeply loved.
+
+I’m smiling like an idiot just writing this.
+  </div>
+</div>
+
+
+
+<!-- PAGE 7 -->
+<div class="page" id="page7">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+  <h2>I aint ever leavin you</h2>
+
+  <div class="letter-container">
+    My Araina,<br><br>
+
+The future… baby, let me tell you — if there’s one thing I think about the most, it’s the future. And honestly, how could I not?
+
+Baby, when I say I want to marry you, I mean it. I really do. I want you to be the mother of my kids I know it might sound far fetched right now, but IDC, I said what I said.
+
+Just imagine living together. That sounds soo amazing, I imagine waking up next to you and giving you a kiss to start the day. I imagine spending time together and just being close in all the little ways.
+
+Of course, before all that, there’s a lot ahead of us — careers and shi but babe, I know we’ll get through all of it together. I really do.
+
+I want you in my life, always. You are the love of my life, and you always will be. I can’t imagine loving anyone else , so please don’t ever leave me, okay?
+
+Things are only going to get better for us from here, and that makes me unbelievably happy.
+
+In the future, yeah, we might have arguments — that’s inevitable. But I believe we’ll get through them because love is real.
+
+Baby, I promise I’ll never let you feel alone. I’ll always care for you. I’ll never ignore you or your emotions. My love for you will never fade — if anything, it will only grow stronger with time.
+
+I promise I’ll never let you lose your belief in love.
+I promise I’ll always stay with you, no matter what happens.
+  </div>
+</div>
+
+
+
+<!-- PAGE 8 -->
+<div class="page" id="page8">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+
+  <h2 style="margin-bottom: 20px;">Arent you beautiful ? 💕</h2>
+
+  <div class="collage">
+
+    <!-- MAIN IMAGE -->
+    <img src="PLACE_MAIN_IMAGE_HERE" class="main">
+
+    <!-- SIDE IMAGES -->
+    <img src="PLACE_IMAGE_2_HERE" class="small">
+    <img src="PLACE_IMAGE_3_HERE" class="small">
+
+    <!-- BOTTOM IMAGES -->
+    <img src="PLACE_IMAGE_4_HERE" class="small">
+    <img src="PLACE_IMAGE_5_HERE" class="small">
+
+  </div>
+
+</div>
+
+<!-- PAGE 9 -->
+<div class="page" id="page9">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+
+  <div class="final-page">
+
+    <div class="final-question-text">
+      Araina, will you be my Valentine ? 💕
+    </div>
+
+    <div class="final-buttons">
+
+      <button class="final-btn yes" onclick="goToPage(11)">
+        Yes
+      </button>
+
+      <button class="final-btn no" id="noBtn">
+        No
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PAGE 11 -->
+<div class="page" id="page11">
+
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+
+  <!-- CONFETTI -->
+  <div class="confetti" id="confetti">
+    <span style="left:5%; animation-delay:0s;"></span>
+    <span style="left:15%; animation-delay:0.3s;"></span>
+    <span style="left:25%; animation-delay:0.6s;"></span>
+    <span style="left:35%; animation-delay:0.2s;"></span>
+    <span style="left:45%; animation-delay:0.5s;"></span>
+    <span style="left:55%; animation-delay:0.1s;"></span>
+    <span style="left:65%; animation-delay:0.4s;"></span>
+    <span style="left:75%; animation-delay:0.7s;"></span>
+    <span style="left:85%; animation-delay:0.2s;"></span>
+    <span style="left:95%; animation-delay:0.6s;"></span>
+  </div>
+
+
+
+    <
+
+<div style="
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:30px;
+">
+
+  <h2 style="
+    font-family:'Playfair Display', serif;
+    font-size:36px;
+    color:#b03060;
+  ">
+    She said YESSSS 💖
+  </h2>
+
+  <p style="
+    font-size:16px;
+    color:#7a3f55;
+    max-width:420px;
+  ">
+    Not like you had much option tho.....hmph <br>
+    Happy Valentine’s Day 💕
+  </p>
+
+<div class="final-message-section">
+
+  <div class="final-message-hint">
+    click on this
+  </div>
+
+  <button class="final-message-btn" onclick="goToPage(12)">
+    the final message
+  </button>
+
+</div>
+
+
+</div>
+
+
+  </div>
+
+</div>
+
+<!-- PAGE 12 -->
+<div class="page final-message-page" id="page12">
+
+  <button class="back-btn" onclick="goBack()">← Back</button>
+
+  <div style="
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  ">
+
+    <div class="final-message-box">
+    Araina, <br>
+
+
+    YOU SAIDD YESSS <br> YAAYYAAAAAAAA. Babbyyy, you just made my month, I swear I have never been this happyyyy. Thankyouuu forrr trusting meee with your heart babyy and I promisee I will take good care of     it.<br>
+    You are mine and nothing can ever change that, not even god himself. I love youu sooo much Aaruu, words cant ever describe my love, its impossible. Im gonna keep you with me forever baby, forver ohk ?
+    I would choose you as my love even in my afterlife because you are perfect like that. I'm always gonna love you the same, forever and ever. <br><br>
+
+    Yours and only Yours <br>
+    Siddhant
+    
+
+   
+
+      
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PAGE 10 -->
+<div class="page" id="page10">
+
+  <button class="back-btn" onclick="goBack()">← Back</button>
+
+  <h2>Listen 🎧</h2>
+
+  <div class="listen-container">
+
+    <!-- AUDIO 1 -->
+    <div class="audio-card">
+      <div class="audio-label">1</div>
+      <audio controls>
+        <source src="PASTE_AUDIO_1_HERE.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <!-- AUDIO 2 -->
+    <div class="audio-card">
+      <div class="audio-label">2</div>
+      <audio controls>
+        <source src="PASTE_AUDIO_2_HERE.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <!-- AUDIO 3 -->
+    <div class="audio-card">
+      <div class="audio-label">3</div>
+      <audio controls>
+        <source src="PASTE_AUDIO_3_HERE.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+let pageHistory = [];
+
+function goToPage(pageNumber) {
+  const currentPage = document.querySelector('.page.active');
+  if (currentPage) {
+    pageHistory.push(currentPage.id);
+    currentPage.classList.remove('active');
+  }
+
+  const nextPage = document.getElementById('page' + pageNumber);
+  if (nextPage) {
+    nextPage.classList.add('active');
+  }
+
+  // 🎵 Music on Page 11 (keep this if you already have it)
+  if (pageNumber === 11) {
+    const music = document.getElementById("celebrationMusic");
+    if (music) {
+      music.currentTime = 0;
+      music.play().catch(() => {});
+    }
+  }
+}
+
+
+
+
+
+const noBtn = document.getElementById("noBtn");
+
+if (noBtn) {
+  const parent = noBtn.parentElement;
+
+  const moveNo = () => {
+    const maxX = parent.clientWidth - noBtn.offsetWidth;
+    const maxY = parent.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+  };
+
+  noBtn.addEventListener("mouseenter", moveNo);
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("mousemove", moveNo);
+}
+
+function goBack() {
+  if (pageHistory.length === 0) return;
+
+  const currentPage = document.querySelector('.page.active');
+  if (currentPage) {
+    currentPage.classList.remove('active');
+  }
+
+  const prevPageId = pageHistory.pop();
+  const prevPage = document.getElementById(prevPageId);
+  if (prevPage) {
+    prevPage.classList.add('active');
+  }
+}
+
+
+
+</script>
+
+<audio id="celebrationMusic">
+  <source src="PASTE_MUSIC_FILE_HERE.mp3" type="audio/mpeg">
+</audio>
+
+
+
+</body>
+</html>
+
