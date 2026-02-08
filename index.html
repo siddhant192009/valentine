@@ -183,28 +183,26 @@
   gap: 16px;
 }
 
-.collage img {
+..collage img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  background: #ffd6e8;
+  height: 100%;
+  object-fit: contain;     /* full image ALWAYS visible */
+  background: #ffd6e8;     /* fills empty space nicely */
   border-radius: 18px;
   box-shadow: 0 10px 22px rgba(0,0,0,0.15);
-
-  display: block;   /* 👈 ADD THIS */
-  margin: auto;     /* 👈 ADD THIS */
 }
 
 
 
+/* Main image area */
 .collage .main {
   grid-row: span 2;
-  max-height: 420px;
+  aspect-ratio: 3 / 4;
 }
 
-
+/* Smaller images */
 .collage .small {
-  max-height: 200px;
+  aspect-ratio: 1 / 1;
 }
 
 
