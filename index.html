@@ -185,22 +185,28 @@
 
 .collage img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  background: #ffd6e8;
   border-radius: 18px;
   box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+
+  display: block;   /* 👈 ADD THIS */
+  margin: auto;     /* 👈 ADD THIS */
 }
 
-/* Large main image */
+
+
 .collage .main {
   grid-row: span 2;
-  height: 420px;
+  max-height: 420px;
 }
 
-/* Smaller images */
+
 .collage .small {
-  height: 200px;
+  max-height: 200px;
 }
+
 
 /* Separate final option */
 .final-section {
